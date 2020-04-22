@@ -1,0 +1,44 @@
+{
+    "name": "Artizan/cybersource-wrapper",
+    "description": "This is a simple cybersource wrapper",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Artizan Team",
+            "email": "help@Artizan.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "firebase/php-jwt": "5.0.0",
+        "illuminate/support": "^5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Artizan\\Cybersource\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Artizan\\Cybersource\\Providers\\CybersourceServiceProvider"
+            ],
+            "aliases": {
+                "CybersourcePayments": "Artizan\\Cybersource\\Facades\\CybersourcePaymentsFacade"
+            }
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover",
+            "php artisan vendor:publish --tag=cybersource-config-file --force"
+        ],
+        "post-install-cmd": [
+              "php artisan vendor:publish --tag=cybersource-config-file --force"
+        ],
+        "post-update-cmd": [
+              "php artisan vendor:publish --tag=cybersource-config-file --force"
+        ]
+    }
+}
