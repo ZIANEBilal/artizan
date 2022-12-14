@@ -1,2 +1,2 @@
 # artizan
-artizan.ma
+
